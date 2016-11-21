@@ -4345,7 +4345,11 @@ abstract class elFinderVolumeDriver {
 	 * @author Dmitry (dio) Levashov
 	 **/
 	protected function tmbname($stat) {
-		return $stat['hash'].$stat['ts'].'.png';
+		// return $stat['hash'].$stat['ts'].'.png';
+		$ext = 'png';
+        if($stat['mime'] == 'image/jpeg'){$ext = 'jpg';}
+        if($stat['mime'] == 'image/gif'){$ext = 'gif';}
+        return current(explode('.', $stat['name'])).'.'.$ext;
 	}
 	
 	/**
